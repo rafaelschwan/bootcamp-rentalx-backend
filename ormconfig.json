@@ -6,7 +6,8 @@
     "database": "rentalx",
     "port": "5432",
     "entities": [
-        "./src/modules/cars/entities/*.ts"
+        "./src/modules/cars/entities/*.ts",
+        "./src/modules/accounts/entities/*.ts"
     ],
     "migrations": ["./src/database/migrations/*.ts"],
     "cli": {

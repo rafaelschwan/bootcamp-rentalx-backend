@@ -23,8 +23,6 @@ O usuário nao precisa estar logado no sistema
 
 **RF**
 Deve ser possível cadastrar uma especificação para um carro
-Deve ser possível listar todas as especificações
-Deve ser possível listar todos os carros
 
 **RN**
 Não deve ser possível cadastrar uma especificação para um carro não cadastrado
@@ -35,7 +33,6 @@ O usuário responsável pelo cadastro deve ser um usuario administrador
 
 **RF**
 Deve ser possível cadastrar a imagem do carro
-Deve ser possível listar todos os carros
 
 **RNF**
 Utilizar o multer para upload dos arquivos
@@ -57,6 +54,7 @@ Não deve ser possível cadastrar um novo aluguél caso já exista um aberto par
 **-----------------------------------------------------------------------------------------------------------------------------------**
 
 # Legendas
-**RF**  > Requisitos funcionais
+
+**RF** > Requisitos funcionais
 **RNF** > Requisitos não funcionais
-**RN**  > Regras de negócio
+**RN** > Regras de negócio

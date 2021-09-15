@@ -1,11 +1,9 @@
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
+import { inject, injectable } from 'tsyringe';
 
 import { Rental } from '@modules/rentals/infra/typeorm/entities/Rental';
 import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsRepository';
+import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { AppError } from '@shared/errors/AppError';
-
-dayjs.extend(utc);
 
 interface IRequest {
     user_id: string;
@@ -13,8 +11,14 @@ interface IRequest {
     expected_return_date: Date;
 }
 
+@injectable()
 class CreateRentalUseCase {
-    constructor(private rentalsRepository: IRentalsRepository) {}
+    constructor(
+        @inject('RentalsRepository')
+        private rentalsRepository: IRentalsRepository,
+        @inject('DayjsProvider')
+        private dateProvider: IDateProvider,
+    ) {}
 
     async execute({
         user_id,
@@ -23,7 +27,6 @@ class CreateRentalUseCase {
     }: IRequest): Promise<Rental> {
         const compareHours = 24;
 
-        // Carro em outro aluguel
         const carUnavailable = await this.rentalsRepository.findOpenRentalByCar(
             car_id,
         );
@@ -31,21 +34,16 @@ class CreateRentalUseCase {
             throw new AppError('Car is unavailable');
         }
 
-        // Usuario em outro aluguel
         const rentalOpenToUser =
             await this.rentalsRepository.findOpenRentalByUser(user_id);
         if (rentalOpenToUser) {
             throw new AppError('There is a rental in progress for user');
         }
 
-        // Alguel com duracao de < 24 horas
-        const expectedReturnDateFormat = dayjs(expected_return_date)
-            .utc()
-            .local()
-            .format();
-
-        const dateNow = dayjs().utc().local().format();
-        const compare = dayjs(expectedReturnDateFormat).diff(dateNow, 'hours');
+        const compare = this.dateProvider.compareInHours(
+            this.dateProvider.dateNow(),
+            expected_return_date,
+        );
 
         if (compare < compareHours) {
             throw new AppError('Invalid return time');

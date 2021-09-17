@@ -59,7 +59,8 @@
         ],
         "import/no-extraneous-dependencies": [
             "error",
-            { "devDependencies": ["**/*.spec.js"] }
+            { "devDependencies": ["**/*.spec.js"] },
+            { "devDependencies": ["**/*.spec.ts"] }
         ]
     },
     "settings": {

@@ -1,16 +1,18 @@
 {
     "type": "postgres",
     "host": "localhost",
-    "username": "postgres",
-    "password": "postgres",
-    "database": "rentalx",
+    "username": "",
+    "password": "",
+    "database": "",
     "port": "5432",
     "entities": [
         "./src/modules/cars/infra/typeorm/entities/*.ts",
         "./src/modules/accounts/infra/typeorm/entities/*.ts",
         "./src/modules/rentals/infra/typeorm/entities/*.ts"
     ],
-    "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+    "migrations": [
+        "./src/shared/infra/typeorm/migrations/*.ts"
+    ],
     "cli": {
         "migrationsDir": "./src/shared/infra/typeorm/migrations"
     }

@@ -2,8 +2,8 @@
     "env": {
         "es2020": true,
         "node": true,
-		"jest": true
-    }, 
+        "jest": true
+    },
     "extends": [
         "airbnb-base",
         "plugin:@typescript-eslint/recommended",
@@ -21,18 +21,20 @@
         "prettier"
     ],
     "rules": {
-      "prettier/prettier": "error",
-      "camelcase": "off",
+        "prettier/prettier": "error",
+        "camelcase": "off",
         "import/no-unresolved": "error",
         "@typescript-eslint/naming-convention": [
             "error",
             {
-            "selector": "interface",
-            "format": ["PascalCase"],
-            "custom": {
-                "regex": "^I[A-Z]",
-                "match": true
-            }
+                "selector": "interface",
+                "format": [
+                    "PascalCase"
+                ],
+                "custom": {
+                    "regex": "^I[A-Z]",
+                    "match": true
+                }
             }
         ],
         "class-methods-use-this": "off",
@@ -46,26 +48,41 @@
             "error",
             "ignorePackages",
             {
-            "ts": "never"
-            } 
-        ], 
+                "ts": "never"
+            }
+        ],
         "import-helpers/order-imports": [
             "warn",
             {
-            "newlinesBetween": "always",
-            "groups": ["module", "/^@/", ["parent", "sibling", "index"]],
-            "alphabetize": { "order": "asc", "ignoreCase": true }
+                "newlinesBetween": "always",
+                "groups": [
+                    "module",
+                    "/^@/",
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
             }
         ],
         "import/no-extraneous-dependencies": [
             "error",
-            { "devDependencies": ["**/*.spec.js"] },
-            { "devDependencies": ["**/*.spec.ts"] }
+            {
+                "devDependencies": [
+                    "**/*.spec.js",
+                    "**/*.spec.ts"
+                ]
+            }
         ]
     },
     "settings": {
-        "import/resolver": { 
-            "typescript": {} 
+        "import/resolver": {
+            "typescript": {}
         }
     }
 }

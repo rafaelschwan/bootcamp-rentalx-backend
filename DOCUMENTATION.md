@@ -16,7 +16,19 @@
    sudo apt update
    Instalar node:
       Passo a passo do site
-   Instalar docker:
+   Instalar docker (se for utilizar processos com docker):
       Passo a passo do site
    Instalar yarn:
       sudo npm install --global yarn
+   Instalar nginx e configurar:
+      sudo apt install nginx
+      Passo a passo do tutorial da digiOcean
+   Instalar pm2 e configurar:
+      sudo npm install pm2 -g
+      pm2 start caminho do server.js -- name rentalx
+   Rodar as migrations sem CI/CD
+      ./node_modules/.bin/typeorm migration:run
+   Configurar dominio
+      Configurar Route 53 e onde foi comprado
+      Configurar certbot (https)
+      
